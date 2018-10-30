@@ -1,0 +1,3 @@
+---
+ethstats_dir: /opt/ethstats
+ws_secret: insecure

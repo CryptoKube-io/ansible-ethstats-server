@@ -1,0 +1,15 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Alexander Miller
+  description: eth-netstats installation
+  company: CryptoKube.io
+  license: GPLv3
+  min_ansible_version: 2.5
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+  galaxy_tags:
+    - ethereum

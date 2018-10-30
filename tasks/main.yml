@@ -1,0 +1,31 @@
+---
+- name: Clone EthStats repo
+  git:
+    repo: https://github.com/cubedro/eth-netstats
+    dest: "{{ethstats_dir}}"
+
+- name: Install eth-netstats
+  npm:
+    path: "{{ethstats_dir}}"
+
+- name: Install grunt-cli
+  npm:
+    name: grunt-cli
+    global: yes
+
+- name: Build eth-netstats
+  command: grunt
+  args:
+    chdir: "{{ethstats_dir}}"
+
+- name: Install systemd script
+  template:
+    src: ethstats-server.service.j2
+    dest: /etc/systemd/system/ethstats-server.service
+
+- name: Enable and start EthStats service
+  systemd:
+    name: ethstats-server.service
+    state: started
+    enabled: yes
+    daemon_reload: yes
