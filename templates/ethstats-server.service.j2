@@ -4,13 +4,11 @@ After=network.target
 
 [Service]
 WorkingDirectory={{ethstats_dir}}
-Environment={{ws_secret}}
+Environment=WS_SECRET={{ws_secret}}
 ExecStart=/usr/bin/npm start
 KillMode=process
 Restart=on-failure
 Type=simple
 
 [Install]
-WantedBy=multi-user.target
-Alias=ethstats.service
-
+WantedBy=default.target
